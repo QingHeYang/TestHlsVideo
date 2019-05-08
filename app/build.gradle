@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+    defaultConfig {
+        applicationId "sohero.com.testhlsvideo"
+        minSdkVersion 21
+        targetSdkVersion 28
+
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs' // Module A的libs的目录地址
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    //implementation 'com.trello.rxlifecycle3:rxlifecycle:3.0.0'
+    //implementation 'com.trello.rxlifecycle3:rxlifecycle-components:3.0.0'
+    //noinspection GradleCompatible
+    api 'com.android.support:appcompat-v7:26+'
+    api 'com.android.support:support-v4:26+'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.4'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.4'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-x86:0.8.4'
+    testImplementation 'junit:junit:4.12'
+    implementation files('libs/glide-3.7.0.jar')
+    implementation files('libs/gson-2.8.2.jar')
+    implementation files('libs/reactive-streams-1.0.2.jar')
+    implementation files('libs/rxandroid-2.0.1.jar')
+    implementation files('libs/rxjava-2.0.4.jar')
+    implementation files('libs/rxpermissions-0.9.5.jar')
+}
